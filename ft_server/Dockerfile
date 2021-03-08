@@ -22,7 +22,7 @@ COPY ./srcs/my_nginx-config /etc/nginx/sites-available/default
 
 RUN mv phpMyAdmin-5.0.1-english phpmyadmin
 
-COPY ./srcs/config.inc.php phpmyadmin
+COPY ./srcs/config.inc.php phpmyadmin/phpMyAdmin-5.0.1-english
 
 RUN wget https://wordpress.org/latest.tar.gz
 
@@ -40,8 +40,9 @@ RUN chown -R www-data:www-data *
 
 RUN chmod -R 755 /var/www/*
 
-COPY ./srcs/init.sh ./
+COPY ./srcs/init.sh /
 
-RUN chmod +x init.sh
+RUN chmod +x /init.sh
 
-CMD ./init.sh
+CMD /init.sh
+
